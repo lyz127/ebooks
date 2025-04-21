@@ -131,6 +131,17 @@
   }
 }{}
 
+% 没有编号但又需要添加到目录中的 chapter (No num(ber) chapter)。
+% 参数1: 目录中的文字（可选，如果没有指定，则使用参数2的值）
+% 参数2: 正文中的文字
+\NewDocumentCommand{\nonumchapter}{o m}{%
+  \touchcounter{chapter}
+  \chapter*{#2}
+  \markright{#2}
+  \IfNoValueTF{#1}
+    {\addcontentsline{toc}{chapter}{#2}}
+    {\addcontentsline{toc}{chapter}{#1}}
+}
 
 % 没有编号但又需要添加到目录中的 section (No num(ber) section)。
 % 参数1: 目录中的文字（可选，如果没有指定，则使用参数2的值）
