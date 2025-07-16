@@ -9,3 +9,5 @@
 *.toc
 temp/
 .vscode/
+install/
+build/
