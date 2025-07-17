@@ -18,12 +18,10 @@ endif
 
 targets: $(OBJECTS)
 
-before: $(DEPENDS)
-
 $(DEPENDS): FORCE_MAKE
 	$(MAKE) -C $@
 
-$(OBJECTS): %.pdf : %.tex before FORCE_MAKE
+$(OBJECTS): %.pdf : %.tex $(DEPENDS) FORCE_MAKE
 	$(TEX) $(MODE) $<
 
 all:
