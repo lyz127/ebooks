@@ -11,7 +11,7 @@
     \path [name path=arcA] (ma) arc (0:90:2);
     \path [name intersections={of=arcA and ac, by={na}}];
     \path [name path=arcMA] (ma)+(2,0) arc (0:90:2);
-    \path [name path=arcNA] (na)+(30:2) arc (30:-60:2);;
+    \path [name path=arcNA] (na)+(30:2) arc (30:-60:2);
     \path [name intersections={of=arcMA and arcNA, by={pa}}];
     \path [name path=splitA] (A) -- (pa);
 

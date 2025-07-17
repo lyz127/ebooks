@@ -1,8 +1,8 @@
 \begin{tikzpicture}[>=Stealth, scale=0.8]
-    \pgfmathsetmacro{\r}{3};
+    \pgfmathsetmacro{\r}{3}
     \coordinate (O) at (0,0);
 
-    \pgfmathsetmacro{\b}{45};
+    \pgfmathsetmacro{\b}{45}
     \coordinate (S1) at (\b:\r);
     \coordinate (S2) at (90+\b:\r);
     \coordinate (S3) at (180+\b:\r);
@@ -11,7 +11,7 @@
     \draw[dashed] (S1) -- (S2) -- (S3) -- (S4) -- (S1);
     \draw (S1) -- (S3);
 
-    \pgfmathsetmacro{\a}{15};
+    \pgfmathsetmacro{\a}{15}
     \path[name path=l1] (S1) -- +(180+\a:5.5);
     \path[name path=l2] (S3) -- +(\a:5.5);
     \path [name intersections={of=c and l1, by={t1,t2}}];

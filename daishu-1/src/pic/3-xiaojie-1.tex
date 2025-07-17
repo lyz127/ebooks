@@ -1,6 +1,6 @@
 \begin{tikzpicture}[>=Stealth]
-    \pgfmathsetmacro{\b}{10};
-    \pgfmathsetmacro{\h}{2.5};
+    \pgfmathsetmacro{\b}{10}
+    \pgfmathsetmacro{\h}{2.5}
 
     \draw (-0.6, \b+\h-0.3) rectangle (0.6, \b+\h+1);
     \node at (0, \b+\h+0.6) {$S_{\alpha + \beta}$};
@@ -21,7 +21,7 @@
     \draw (0.6, \b-0.2) -- (2.8, \b-0.2) -- (2.8, \b+\h+0.9) -- (0.6, \b+\h+0.9);
 
 
-    \pgfmathsetmacro{\s}{5.6};
+    \pgfmathsetmacro{\s}{5.6}
     \draw [->] (2.8, \b+\h/2) -- (\s, \b+\h/2);
     \draw (\s, \b-0.2) rectangle (\s+7, \b+4);
     \coordinate (C2) at (\s+3.5, \b-0.3);
@@ -32,7 +32,7 @@
 
     %------------------------------------
 
-    \pgfmathsetmacro{\b}{6};
+    \pgfmathsetmacro{\b}{6}
 
     \draw[->] (C1) -- (0, \b+2.5);
     \draw (-0.8, \b-0.5) rectangle (3.2, \b+2.5);
@@ -43,12 +43,12 @@
     \node at (1.2, \b+0.8) {$\cos 2\alpha = 2\cos^2\alpha - 1$};
     \node at (1.2, \b) {$\cos 2\alpha = 1 - 2\sin^2\alpha$};
 
-    \pgfmathsetmacro{\s}{5};
+    \pgfmathsetmacro{\s}{5}
     \draw[->] (3.2, \b+2) -- (\s, \b+2);
     \draw (\s, \b+1.6) rectangle (\s+2, \b+2.3);
     \node at (\s+1, \b+2) {$\text{万能公式}$};
 
-    \pgfmathsetmacro{\b}{3};
+    \pgfmathsetmacro{\b}{3}
     \draw[->] (C2) -- ++(0, -2.5);
     \draw (\s, \b-0.2) rectangle (\s+7, \b+4);
     \coordinate (C2) at (\s+3.5, \b-0.3);

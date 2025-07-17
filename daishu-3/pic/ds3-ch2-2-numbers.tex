@@ -8,7 +8,7 @@
                 \draw (0, 0) rectangle (0.9, 0.3);
                 \draw (0.3, 0) -- (0.3, 0.3);
                 \draw (0.6, 0) -- (0.6, 0.3);
-                \def\first{\the\numexpr(#1)/100\relax};
+                \def\first{\the\numexpr(#1)/100\relax}
                 \draw (0.15, 0.15) node{\first};
                 \ifnum #2>1
                     \draw (0.45, 0.15) node{\the\numexpr(#1)/10 - \first*10\relax};
