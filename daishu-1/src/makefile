@@ -1,6 +1,6 @@
 TARGETS = daishu-1
 OBJECTS = $(foreach target, $(TARGETS), $(target).pdf)
-DEPENDS = pic-pdf
+DEPENDS = ../pic-pdf
 
 EXT     = synctex.gz
 TEMP    = $(foreach target, $(TARGETS),$(foreach ext, $(EXT), $(target).$(ext)))
