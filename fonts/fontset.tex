@@ -1,0 +1,38 @@
+% 字体设置
+\ExplSyntaxOn
+\DeclareDocumentCommand\userfontset{ s o m }{
+	\xeCJKsetup{AutoFallBack}
+	\IfNoValueF{#2}{
+		\str_if_eq:NNT {#2}{math}{
+			\xeCJKsetup{CJKmath=true}
+		}
+	}
+	\IfBooleanTF{#1}{
+		\setCJKmainfont[Path=#3,BoldFont=FandolSong-Bold,ItalicFont=TH-Khaai-TP0,FallBack=TH-Sy-P2]{TH-Sy-P0}
+	}{
+		\setCJKmainfont[Path=#3,BoldFont=FandolSong-Bold,ItalicFont=TH-Khaai-TP0,FallBack=TH-Sung-TP2]{TH-Sung-TP0}
+	}
+	\setCJKsansfont[Path=#3,BoldFont=FandolSong-Bold,FallBack=TH-Khaai-TP2]{TH-Khaai-TP0}
+	\setCJKmonofont[Path=#3,BoldFont=FandolSong-Bold]{STFangsong}
+	\setCJKfamilyfont{zhsong}[Path=#3,AutoFakeBold,FallBack=TH-Sung-TP2]{TH-Sung-TP0}
+	\setCJKfamilyfont{zhhei}[Path=#3]{FZHei-B01}
+	\setCJKfamilyfont{zhkai}[Path=#3,AutoFakeBold,FallBack=TH-Khaai-TP2]{TH-Khaai-TP0}
+	\setCJKfamilyfont{zhfs}[Path=#3,AutoFakeBold]{STFangsong}
+	\setCJKfamilyfont{zhss}[Path=#3,BoldFont=FandolSong-Bold]{FandolSong-Regular}
+	\setCJKfamilyfont{zhsst}[Path=#3,AutoFakeBold,FallBack=TH-Sy-P2]{TH-Sy-P0}
+	\setCJKfamilyfont{zhls}[Path=#3,AutoFakeBold]{FZLiShu-S01}
+	\setCJKfamilyfont{zhxk}[Path=#3,AutoFakeBold]{FZXingkai}
+	\setCJKfamilyfont{zhsj}[Path=#3,AutoFakeBold]{FZShouJinShu}
+	\setCJKfamilyfont{jaming}[Path=#3,AutoFakeBold,FallBack=TH-Ming-P2]{TH-Ming-P0}
+	\newcommand*{\songti}{\CJKfamily{zhsong}}
+	\newcommand*{\heiti}{\CJKfamily{zhhei}}
+	\newcommand*{\kaishu}{\CJKfamily{zhkai}}
+	\newcommand*{\fangsong}{\CJKfamily{zhfs}}
+	\newcommand*{\shusong}{\CJKfamily{zhss}}
+	\newcommand*{\shusongti}{\CJKfamily{zhsst}}
+	\newcommand*{\lishu}{\CJKfamily{zhls}}
+	\newcommand*{\xingkai}{\CJKfamily{zhxk}}
+	\newcommand*{\shoujin}{\CJKfamily{zhsj}}
+	\newcommand*{\jpfont}{\CJKfamily{jaming}}
+}
+\ExplSyntaxOff
