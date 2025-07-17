@@ -1,4 +1,4 @@
-TARGETS = daishu-2
+TARGETS = gaozhong-daishu-2
 OBJECTS = $(addsuffix .pdf, $(TARGETS))
 DEPENDS = ../pic-pdf
 

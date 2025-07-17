@@ -1,4 +1,4 @@
-TARGETS = daishu-3
+TARGETS = gaozhong-daishu-3
 OBJECTS = $(addsuffix .pdf, $(TARGETS))
 
 EXT     = synctex.gz

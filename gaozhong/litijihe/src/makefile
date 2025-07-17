@@ -1,4 +1,4 @@
-TARGETS = litijihe
+TARGETS = gaozhong-litijihe
 OBJECTS = $(addsuffix .pdf, $(TARGETS))
 
 EXT     = synctex.gz
