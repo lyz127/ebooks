@@ -1,6 +1,7 @@
 SOURCES = src
-OBJECTS = $(wildcard */$(SOURCES)/)
-OBJECTS_EXTRA = $(wildcard */view/)
+SOURCES_EXTRA = view
+OBJECTS = $(foreach sources, $(SOURCES), $(wildcard */*/$(sources)/))
+OBJECTS_EXTRA = $(foreach sources_extra, $(SOURCES_EXTRA), $(wildcard */*/$(sources_extra)/))
 
 ifeq ($(OS), Windows_NT)
 	RM    = del
@@ -27,7 +28,7 @@ $(OBJECTS_EXTRA): FORCE_MAKE
 install: targets
 	-$(RMDIR) install
 	$(MKDIR) install
-	$(foreach object, $(OBJECTS), $(CP) $(object)$(subst /$(SOURCES)/,.pdf,$(object)) install;)
+	$(foreach object, $(OBJECTS), $(CP) $(object)$(subst /,-,$(subst /$(SOURCES)/,.pdf,$(object))) install;)
 	$(foreach object, $(OBJECTS) $(OBJECTS_EXTRA), $(MAKE) clean -C $(object);)
 
 clean:
