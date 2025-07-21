@@ -1,8 +1,9 @@
 TARGETS = gaozhong-daishu-3
-OBJECTS = $(addsuffix .pdf, $(TARGETS))
+DEPENDS = 
+EXT     = %.synctex.gz
 
-EXT     = synctex.gz
-TEMP    = $(foreach target, $(TARGETS),$(foreach ext, $(EXT), $(target).$(ext)))
+INSTALL_DIR ?= install/
+TEMP    = $(filter $(EXT), $(foreach target, $(TARGETS), $(wildcard $(target).*)))
 
 TEX     = latexmk -xelatex
 MODE    = -interaction=nonstopmode -synctex=1 -auxdir=build
@@ -10,27 +11,52 @@ MODE    = -interaction=nonstopmode -synctex=1 -auxdir=build
 ifeq ($(OS), Windows_NT)
 	RM    = del
 	RMDIR = rmdir /s /q
+	CP    = copy
+	MKDIR = mkdir
 else
 	RM    = rm
 	RMDIR = rm -r
+	CP    = cp
+	MKDIR = mkdir -p
 endif
 
-targets: $(OBJECTS)
+all:   SUBGOAL := all
+clean: SUBGOAL := clean
+distclean: SUBGOAL := distclean
+tidy:  SUBGOAL := tidy
 
-$(OBJECTS): %.pdf : %.tex FORCE_MAKE
-	$(TEX) $(MODE) $<
+targets: $(DEPENDS) $(TARGETS:%=%.pdf)
 
-all:
+all: $(DEPENDS)
 	$(TEX) $(MODE)
 
-install: targets
-	-$(TEX) -c
-	-$(RMDIR) build
-	-$(RM) $(TEMP)
+install: targets $(INSTALL_DIR) $(TARGETS)
 
-clean:
+clean: $(DEPENDS) $(TEMP)
 	-$(TEX) -C
 	-$(RMDIR) build
-	-$(RM) $(TEMP)
 
-.PHONY: targets all install clean FORCE_MAKE
+distclean: $(DEPENDS) clean
+	-$(RMDIR) $(INSTALL_DIR)
+
+tidy: $(DEPENDS) $(TEMP)
+	-$(TEX) -c
+	-$(RMDIR) build
+
+$(DEPENDS): FORCE_MAKE
+	$(MAKE) -C $@ $(SUBGOAL)
+
+$(TARGETS:%=%.pdf): %.pdf : %.tex FORCE_MAKE
+	$(TEX) $(MODE) $<
+
+$(TEMP): FORCE_MAKE
+	-$(RM) $@
+
+$(INSTALL_DIR): FORCE_MAKE
+	-$(RMDIR) $@
+	$(MKDIR) $@
+
+$(TARGETS): FORCE_MAKE
+	$(CP) $@.pdf $(INSTALL_DIR)
+
+.PHONY: targets all install clean distclean tidy FORCE_MAKE

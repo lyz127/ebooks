@@ -10,4 +10,5 @@
 temp/
 .vscode/
 install/
+extra/
 build/
